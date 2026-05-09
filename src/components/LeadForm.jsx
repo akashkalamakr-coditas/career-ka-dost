@@ -8,6 +8,7 @@ import { SectionHeading } from './SectionHeading'
 const initial = {
   studentName: '',
   phone: '',
+  email: '',
   classExam: '',
   city: '',
 }
@@ -27,6 +28,7 @@ export function LeadForm() {
       `Hi ${SITE.name}, I'd like to book a free counselling session.`,
       `Student name: ${values.studentName}`,
       `Phone: ${values.phone}`,
+      `Email: ${values.email}`,
       `Class / Exam: ${values.classExam}`,
       `City: ${values.city}`,
     ].join('\n')
@@ -76,7 +78,7 @@ export function LeadForm() {
                   onClick={() =>
                     openWhatsApp({
                       phoneE164: SITE.whatsappE164,
-                      message: `Follow-up: ${values.studentName}, ${values.phone}`,
+                      message: `Follow-up: ${values.studentName}, ${values.phone}, ${values.email}`,
                     })
                   }
                 >
@@ -114,6 +116,22 @@ export function LeadForm() {
                     onChange={handleChange}
                     className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 shadow-inner outline-none transition focus:border-brand-500 focus:ring-4 focus:ring-brand-500/15"
                     placeholder="10-digit mobile"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="email" className="block text-sm font-semibold text-slate-700">
+                    Email id
+                  </label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    required
+                    autoComplete="email"
+                    value={values.email}
+                    onChange={handleChange}
+                    className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 shadow-inner outline-none transition focus:border-brand-500 focus:ring-4 focus:ring-brand-500/15"
+                    placeholder="you@example.com"
                   />
                 </div>
                 <div>
