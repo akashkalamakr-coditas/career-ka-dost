@@ -2,10 +2,10 @@
 export const SITE = {
   name: 'Career Ka Dost',
   tagline: 'Expert admission & career counselling',
-  phoneDisplay: '+91 98765 43210',
+  phoneDisplay: '+91 9503821010',
   /** E.164 without + for wa.me */
-  whatsappE164: '919876543210',
-  phoneTel: '+919876543210',
+  whatsappE164: '919503821010',
+  phoneTel: '+919503821010',
   instagramUrl: 'https://www.instagram.com/careerkadost',
   addressLine: 'India — add your full centre address here',
   copyrightYear: 2026,
