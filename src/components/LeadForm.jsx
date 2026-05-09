@@ -46,19 +46,22 @@ export function LeadForm() {
           subtitle="No spam. Just a focused conversation to guide NEET/JEE engineering admissions or career planning after 10th/12th."
         />
         <div className="overflow-hidden rounded-3xl shadow-2xl ring-1 ring-slate-200/80 md:grid md:grid-cols-5">
-          <div className="relative hidden min-h-[280px] md:col-span-2 md:block">
-            <PosterImage
-              src={IMAGES.leadBanner}
-              fallback={IMAGE_FALLBACKS.leadBanner}
-              alt="Students preparing for a brighter career future"
-              className="absolute inset-0 h-full w-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-br from-brand-700/90 to-brand-600/70" />
-            <div className="relative flex h-full flex-col justify-end p-8 text-white">
-              <p className="text-lg font-bold">Career Ka Dost</p>
-              <p className="mt-2 text-sm text-white/90">
-                Join hundreds of families who traded confusion for a clear admission game-plan.
-              </p>
+          <div className="relative hidden min-h-[280px] overflow-hidden bg-brand-800 md:col-span-2 md:block">
+            <div className="pointer-events-none absolute inset-0 overflow-hidden">
+              <PosterImage
+                src={IMAGES.leadBanner}
+                fallback={IMAGE_FALLBACKS.leadBanner}
+                alt="Students preparing for a brighter career future"
+                className="absolute left-1/2 top-1/2 block min-h-full min-w-full max-w-none object-cover object-center [transform:translate(-50%,-50%)_scale(0.88)]"
+              />
+            </div>
+            <div className="relative flex h-full flex-col justify-end p-6 md:p-8">
+              <div className="max-w-md rounded-xl border border-white/70 bg-white/92 px-4 py-3 shadow-lg shadow-slate-900/10 backdrop-blur-[2px] md:px-5 md:py-4">
+                <p className="text-lg font-bold text-slate-900">{SITE.name}</p>
+                <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                  Join hundreds of families who traded confusion for a clear admission game-plan.
+                </p>
+              </div>
             </div>
           </div>
           <div className="bg-gradient-to-br from-brand-50 via-white to-accent-400/10 p-6 md:col-span-3 md:p-10">

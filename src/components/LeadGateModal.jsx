@@ -129,32 +129,24 @@ export function LeadGateModal() {
           </svg>
         </button>
 
-        {/* Left: photo + heavy scrim (hides baked-in JPEG text) + single text column */}
-        <aside className="relative flex min-h-0 w-full max-h-[min(38vh,300px)] shrink-0 flex-col overflow-hidden md:max-h-none md:h-full md:w-[44%] lg:w-[42%]">
-          <div className="relative flex h-full min-h-0 flex-1 flex-col md:min-h-0">
-            {/* Background layer — dim image so overlay copy never “doubles” with photo text */}
+        {/* Left: bg anchored on <aside> (full column height). Inner wrapper was shorter → exposed flat bg as a “blue bar”. */}
+        <aside className="relative isolate flex min-h-0 w-full max-h-[min(38vh,300px)] shrink-0 flex-col overflow-hidden md:max-h-none md:h-full md:w-[44%] lg:w-[42%]">
+          <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden" aria-hidden>
             <PosterImage
               src={IMAGES.leadBanner}
               fallback={IMAGE_FALLBACKS.leadBanner}
               alt=""
-              className="pointer-events-none absolute inset-0 h-full w-full object-cover object-center opacity-45"
+              className="pointer-events-none absolute inset-0 z-0 block h-full w-full object-cover object-center opacity-[0.48] [transform:translateZ(0)_scale(1.12)]"
               priority
             />
-            {/* Opaque scrims: no reliance on semi-transparent stacks that ghost on some GPUs */}
-            <div
-              className="pointer-events-none absolute inset-0 bg-brand-950"
-              aria-hidden
-            />
-            <div
-              className="pointer-events-none absolute inset-0 bg-gradient-to-br from-brand-800/95 via-brand-900/92 to-slate-950/95"
-              aria-hidden
-            />
+            {/* Bottom tint matches gradient end (brand-950) so no harsh flat strip */}
+            <div className="absolute inset-0 z-[1] bg-gradient-to-b from-brand-800/85 via-brand-900/88 to-brand-950" />
+          </div>
 
-            {/* One scroll region, one text flow — no justify-between */}
-            <div className="relative z-10 flex h-full min-h-0 flex-col">
-              <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-5 pb-4 pt-11 text-white [-webkit-overflow-scrolling:touch] sm:px-6 md:h-full md:px-8 md:pb-8 md:pt-14">
-                <div className="space-y-4 md:space-y-5">
-                  <div className="rounded-xl bg-brand-950/35 p-4 ring-1 ring-white/10 md:bg-transparent md:p-0 md:ring-0">
+          <div className="relative z-10 flex min-h-0 flex-1 flex-col">
+            <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-5 pb-8 pt-11 text-white [-webkit-overflow-scrolling:touch] sm:px-6 md:h-full md:px-8 md:pb-10 md:pt-14">
+              <div className="space-y-4 md:space-y-5">
+                <div className="rounded-xl bg-brand-950/35 p-4 ring-1 ring-white/10 md:bg-transparent md:p-0 md:ring-0">
                     <p
                       id={dialogLabelId}
                       className="text-pretty text-lg font-bold leading-snug tracking-tight sm:text-xl md:text-2xl"
@@ -167,9 +159,9 @@ export function LeadGateModal() {
                     <span className="mt-4 inline-flex rounded-full border border-white/30 bg-white/20 px-4 py-2 text-xs font-semibold text-white sm:text-sm">
                       Book Free Counselling
                     </span>
-                  </div>
+                </div>
 
-                  <div className="border-t border-white/25 pt-4">
+                <div className="border-t border-white/25 pt-4">
                     <div className="flex flex-wrap items-center gap-2">
                       <span className="text-base font-bold md:text-lg">{SITE.name}</span>
                       <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-400/40 bg-emerald-600/25 px-3 py-1 text-xs font-semibold text-white">
@@ -181,7 +173,6 @@ export function LeadGateModal() {
                       Join hundreds of families who traded confusion for a clear admission game-plan.
                     </p>
                     <p className="mt-2 text-xs leading-snug text-white/75">Trusted by students & parents</p>
-                  </div>
                 </div>
               </div>
             </div>
